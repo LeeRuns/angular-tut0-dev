@@ -1,0 +1,34 @@
+<h2>Products</h2>
+
+<!-- Iterate through list of products then
+  1. print each product name with header level 3
+  2. if that product has a description then print that
+-->
+<div *ngFor="let product of products; index as productId">
+	<h3>
+    <!-- hyperlink to product description via IT'S NAME-->
+     <a 
+     [title]="product.name + ' details'" 
+     [routerLink]="['/products', productId]">
+      {{ product.name }}
+    </a>
+	</h3>
+
+  <!-- if product description exists, then show it -->
+	<p *ngIf="product.description">
+		Description: {{ product.description }}
+	</p>
+
+  <!--Add button for product share button
+  * simply 
+  -->
+  <button (click)="share()"> <!-- Call share function in ts-->
+    Share <!--share button text-->
+    </button>
+
+<!-- Call the product alert type and pass the product to it -->
+    <app-product-alerts [product]="product" 
+    (notify)="onNotify()">
+      </app-product-alerts>
+   
+</div>

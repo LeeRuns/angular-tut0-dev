@@ -1,0 +1,7 @@
+<h3>Shipping prices</h3>
+
+<div class="shipping-item"*ngFor="let shipping of shippingCosts | async"> 
+  <!-- async pipre ret latest val from stream of data-->
+  <span> {{ shipping.type }} </span>
+  <span> {{ shipping.price | currency }}</span>
+  </div>
