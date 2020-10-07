@@ -1,7 +1,20 @@
 <h3> Cart </h3>
 
+<p>
+    <a routerLink="/shipping">Shipping Prices</a>
+</p>
+
 <div class="cart-item" *ngFor="let item of items">
   <span>{{ item.name }}</span>
   <span> {{ item.price | currency }}</span>
   </div>  
-  
+
+<!--Add form button to enable purchasing input fields -->
+<!-- <form [formGroup]="checkoutForm"></form> -->
+
+<!-- ngSubmit event binding to listen for the form submission and call the onSubmit() method with the checkoutForm value-->
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+  <div>  <label for ="name"> Name </label> <input id="name" type="text" formConrolName="name"> </div>
+  <div>  <label for ="address"> Address </label> <input id="Address" type="text" formConrolName="name"> </div>
+  <button class="button" type="submit">Purchase</button>
+</form>
